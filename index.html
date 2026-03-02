@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -2095,4 +2096,2103 @@
     });
   </script>
 </body>
+=======
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Portofolio</title>
+  
+  <!-- Font Awesome Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700;800;900&family=Space+Grotesk:wght@300;400;500;600;700&family=Aldrich&display=swap" rel="stylesheet">
+  
+  <style>
+    /* ========== RESET & VARIABLES ========== */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      scroll-behavior: smooth;
+    }
+
+    :root {
+      --neon-pink: #ff00ff;
+      --neon-blue: #00ffff;
+      --neon-purple: #b300ff;
+      --neon-yellow: #ffff00;
+      --neon-red: #ff0055;
+      --neon-green: #00ff9d;
+      --dark-bg: #0a0a0f;
+      --darker-bg: #050507;
+      --cyber-black: #000000;
+      --grid-color: rgba(0, 255, 255, 0.1);
+      --grid-color-2: rgba(255, 0, 255, 0.1);
+      --scanline-color: rgba(0, 255, 255, 0.03);
+    }
+
+    body {
+      font-family: 'Space Grotesk', sans-serif;
+      background-color: var(--darker-bg);
+      color: #ffffff;
+      line-height: 1.5;
+      scroll-snap-type: y mandatory;
+      overflow-y: scroll;
+      height: 100vh;
+      position: relative;
+    }
+
+    /* ========== CYBERPUNK ATMOSPHERE EFFECTS ========== */
+    .noise {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: repeating-radial-gradient(circle at 30% 40%, rgba(0,0,0,0.1) 0px, rgba(0,255,255,0.02) 1px, transparent 2px);
+      pointer-events: none;
+      z-index: 9995;
+      opacity: 0.4;
+      mix-blend-mode: overlay;
+    }
+
+    .scanline {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(to bottom, transparent 50%, var(--scanline-color) 50%);
+      background-size: 100% 4px;
+      pointer-events: none;
+      z-index: 9996;
+      animation: scan 10s linear infinite;
+      opacity: 0.3;
+    }
+
+    @keyframes scan {
+      0% { transform: translateY(-100%); }
+      100% { transform: translateY(100%); }
+    }
+
+    .glitch-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: repeating-linear-gradient(0deg, rgba(0,255,255,0.02) 0px, rgba(255,0,255,0.02) 2px, transparent 4px);
+      pointer-events: none;
+      z-index: 9997;
+      mix-blend-mode: overlay;
+    }
+
+    .flicker {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.1);
+      pointer-events: none;
+      z-index: 9998;
+      animation: flicker 0.3s infinite;
+      opacity: 0.1;
+    }
+
+    @keyframes flicker {
+      0%, 100% { opacity: 0.1; }
+      50% { opacity: 0.15; }
+    }
+
+    .rain {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      z-index: 9994;
+      overflow: hidden;
+    }
+
+    .rain-drop {
+      position: absolute;
+      top: -10%;
+      width: 1px;
+      height: 50px;
+      background: linear-gradient(to bottom, transparent, var(--neon-blue));
+      animation: rain linear infinite;
+    }
+
+    @keyframes rain {
+      to { transform: translateY(100vh); }
+    }
+
+    /* ========== CYBER NAVIGATION ========== */
+    .cyber-nav {
+      position: fixed;
+      top: 20px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 90%;
+      max-width: 1300px;
+      background: rgba(0, 0, 0, 0.85);
+      backdrop-filter: blur(15px);
+      border: 1px solid var(--neon-blue);
+      padding: 0.8rem 2rem;
+      z-index: 9999;
+      box-shadow: 0 0 30px rgba(0, 255, 255, 0.3), inset 0 0 20px rgba(0, 255, 255, 0.2);
+      clip-path: polygon(20px 0%, calc(100% - 20px) 0%, 100% 20px, 100% calc(100% - 20px), calc(100% - 20px) 100%, 20px 100%, 0% calc(100% - 20px), 0% 20px);
+    }
+
+    .nav-container {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .nav-logo {
+      font-family: 'Orbitron', sans-serif;
+      font-weight: 800;
+      font-size: 1.3rem;
+      color: var(--neon-blue);
+      text-shadow: 0 0 10px var(--neon-blue), 0 0 20px var(--neon-blue);
+      position: relative;
+      letter-spacing: 2px;
+    }
+
+    .glitch-text {
+      position: relative;
+    }
+
+    .glitch-text::before,
+    .glitch-text::after {
+      content: attr(data-text);
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+    }
+
+    .glitch-text::before {
+      color: var(--neon-pink);
+      z-index: -1;
+      animation: glitch-1 0.4s infinite;
+    }
+
+    .glitch-text::after {
+      color: var(--neon-blue);
+      z-index: -2;
+      animation: glitch-2 0.4s infinite;
+    }
+
+    @keyframes glitch-1 {
+      0%, 100% { clip-path: inset(0 0 0 0); transform: translate(0); }
+      20% { clip-path: inset(20% 0 30% 0); transform: translate(-2px, 2px); }
+      40% { clip-path: inset(50% 0 20% 0); transform: translate(2px, -2px); }
+      60% { clip-path: inset(10% 0 60% 0); transform: translate(-2px, 2px); }
+      80% { clip-path: inset(30% 0 40% 0); transform: translate(2px, -2px); }
+    }
+
+    @keyframes glitch-2 {
+      0%, 100% { clip-path: inset(0 0 0 0); transform: translate(0); }
+      20% { clip-path: inset(60% 0 10% 0); transform: translate(2px, -2px); }
+      40% { clip-path: inset(20% 0 50% 0); transform: translate(-2px, 2px); }
+      60% { clip-path: inset(40% 0 30% 0); transform: translate(2px, -2px); }
+      80% { clip-path: inset(70% 0 5% 0); transform: translate(-2px, 2px); }
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 2rem;
+    }
+
+    .nav-link {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      color: #fff;
+      text-decoration: none;
+      font-family: 'Orbitron', sans-serif;
+      font-size: 0.9rem;
+      font-weight: 500;
+      letter-spacing: 1px;
+      transition: all 0.3s ease;
+      position: relative;
+      padding: 5px 10px;
+    }
+
+    .link-number {
+      color: var(--neon-blue);
+      font-size: 0.8rem;
+      opacity: 0.7;
+    }
+
+    .link-text {
+      position: relative;
+      z-index: 2;
+    }
+
+    .link-glow {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 0;
+      height: 2px;
+      background: var(--neon-blue);
+      box-shadow: 0 0 10px var(--neon-blue);
+      transition: width 0.3s ease;
+    }
+
+    .nav-link:hover .link-glow,
+    .nav-link.active .link-glow {
+      width: 100%;
+    }
+
+    .nav-link.active {
+      color: var(--neon-blue);
+      text-shadow: 0 0 10px var(--neon-blue);
+    }
+
+    .nav-status {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      background: rgba(0, 255, 255, 0.1);
+      border: 1px solid var(--neon-blue);
+      padding: 5px 15px;
+      border-radius: 0;
+      clip-path: polygon(10px 0%, calc(100% - 10px) 0%, 100% 10px, 100% calc(100% - 10px), calc(100% - 10px) 100%, 10px 100%, 0% calc(100% - 10px), 0% 10px);
+    }
+
+    .status-light {
+      width: 10px;
+      height: 10px;
+      background: #0f0;
+      border-radius: 0;
+      box-shadow: 0 0 10px #0f0;
+      animation: pulse 2s infinite;
+      clip-path: polygon(20% 0%, 80% 0%, 100% 20%, 100% 80%, 80% 100%, 20% 100%, 0% 80%, 0% 20%);
+    }
+
+    @keyframes pulse {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0.3; }
+    }
+
+    .status-text {
+      display: flex;
+      flex-direction: column;
+      font-family: 'Orbitron', sans-serif;
+      font-size: 0.7rem;
+    }
+
+    .status-label {
+      color: #888;
+      font-size: 0.6rem;
+    }
+
+    .status-value {
+      color: #0f0;
+      text-shadow: 0 0 5px #0f0;
+      font-weight: 600;
+    }
+
+    /* ========== SECTIONS ========== */
+    .section {
+      scroll-snap-align: start;
+      scroll-snap-stop: always;
+      min-height: 100vh;
+      width: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 2rem 1.5rem;
+      position: relative;
+    }
+
+    /* CYBER GRID BACKGROUND */
+    .cyber-grid {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-image: 
+        linear-gradient(var(--grid-color) 1px, transparent 1px),
+        linear-gradient(90deg, var(--grid-color) 1px, transparent 1px);
+      background-size: 50px 50px;
+      z-index: 0;
+      pointer-events: none;
+    }
+
+    /* CYBER CARD */
+    .cyber-card {
+      background: rgba(10, 10, 20, 0.7);
+      backdrop-filter: blur(14px) saturate(180%);
+      border: 1px solid var(--neon-blue);
+      padding: 3rem 2.5rem;
+      max-width: 1300px;
+      width: 100%;
+      position: relative;
+      z-index: 2;
+      box-shadow: 0 0 50px rgba(0, 255, 255, 0.2), inset 0 0 30px rgba(0, 255, 255, 0.1);
+      clip-path: polygon(30px 0%, calc(100% - 30px) 0%, 100% 30px, 100% calc(100% - 30px), calc(100% - 30px) 100%, 30px 100%, 0% calc(100% - 30px), 0% 30px);
+    }
+
+    .card-corner {
+      position: absolute;
+      width: 20px;
+      height: 20px;
+      border: 2px solid var(--neon-blue);
+      filter: drop-shadow(0 0 5px var(--neon-blue));
+    }
+
+    .card-corner.tl { top: 5px; left: 5px; border-right: none; border-bottom: none; }
+    .card-corner.tr { top: 5px; right: 5px; border-left: none; border-bottom: none; }
+    .card-corner.bl { bottom: 5px; left: 5px; border-right: none; border-top: none; }
+    .card-corner.br { bottom: 5px; right: 5px; border-left: none; border-top: none; }
+
+    /* SECTION HEADER */
+    .section-header {
+      margin-bottom: 3rem;
+      position: relative;
+    }
+
+    .section-header.center {
+      text-align: center;
+    }
+
+    .section-code {
+      font-family: 'Orbitron', sans-serif;
+      color: var(--neon-blue);
+      font-size: 1rem;
+      letter-spacing: 3px;
+      display: block;
+      margin-bottom: 0.5rem;
+    }
+
+    .section-title-cyber {
+      font-family: 'Orbitron', sans-serif;
+      font-size: clamp(2rem, 5vw, 3rem);
+      font-weight: 700;
+      color: #fff;
+      text-shadow: 0 0 10px var(--neon-blue);
+      margin-bottom: 0.5rem;
+    }
+
+    .title-glitch {
+      position: relative;
+    }
+
+    .header-line {
+      width: 100px;
+      height: 3px;
+      background: var(--neon-blue);
+      box-shadow: 0 0 10px var(--neon-blue);
+      margin-top: 0.5rem;
+    }
+
+    .header-line.center {
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    /* ========== COVER SECTION ========== */
+    #cover {
+      background: radial-gradient(circle at 50% 50%, #1a0033, #000000);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hologram-ring {
+      position: absolute;
+      width: 600px;
+      height: 600px;
+      border: 2px solid rgba(0, 255, 255, 0.1);
+      border-radius: 50%;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      animation: rotate 20s linear infinite;
+      box-shadow: 0 0 50px rgba(0, 255, 255, 0.2);
+      z-index: 1;
+    }
+
+    @keyframes rotate {
+      from { transform: translate(-50%, -50%) rotate(0deg); }
+      to { transform: translate(-50%, -50%) rotate(360deg); }
+    }
+
+    .floating-elements {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      z-index: 1;
+    }
+
+    .float-element {
+      position: absolute;
+      font-family: 'Orbitron', sans-serif;
+      color: rgba(0, 255, 255, 0.3);
+      font-size: 0.9rem;
+      animation: float 6s ease-in-out infinite;
+    }
+
+    .float-element.e1 { top: 20%; left: 10%; animation-delay: 0s; }
+    .float-element.e2 { top: 60%; right: 15%; animation-delay: 2s; }
+    .float-element.e3 { bottom: 20%; left: 20%; animation-delay: 4s; }
+
+    @keyframes float {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-20px); }
+    }
+
+    .cover-card {
+      position: relative;
+      z-index: 3;
+    }
+
+    .cover-content {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 2rem;
+    }
+
+    /* PROFILE SECTION */
+    .profile-section {
+      position: relative;
+      margin-bottom: 1rem;
+    }
+
+    .profile-ring-outer {
+      width: 250px;
+      height: 250px;
+      border-radius: 50%;
+      background: linear-gradient(45deg, var(--neon-blue), var(--neon-pink));
+      padding: 5px;
+      animation: pulse-ring 2s infinite;
+    }
+
+    @keyframes pulse-ring {
+      0%, 100% { box-shadow: 0 0 30px var(--neon-blue); }
+      50% { box-shadow: 0 0 60px var(--neon-pink); }
+    }
+
+    .profile-ring-middle {
+      width: 100%;
+      height: 100%;
+      border-radius: 50%;
+      background: var(--darker-bg);
+      padding: 5px;
+    }
+
+    .profile-ring-inner {
+      width: 100%;
+      height: 100%;
+      border-radius: 50%;
+      overflow: hidden;
+      border: 2px solid rgba(255, 255, 255, 0.3);
+    }
+
+    .foto-lingkaran {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    .foto-saya-img {
+      background-image: url('daffa.jpeg');
+      background-size: cover;
+      background-position: center 20%;
+      filter: hue-rotate(320deg) saturate(1.5);
+    }
+
+    .profile-scan {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: repeating-linear-gradient(0deg, transparent, transparent 2px, rgba(0, 255, 255, 0.1) 2px, rgba(0, 255, 255, 0.1) 4px);
+      border-radius: 50%;
+      pointer-events: none;
+    }
+
+    .profile-badge {
+      position: absolute;
+      bottom: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      background: rgba(0, 0, 0, 0.8);
+      border: 1px solid var(--neon-blue);
+      padding: 5px 20px;
+      font-family: 'Orbitron', sans-serif;
+      font-size: 0.8rem;
+      white-space: nowrap;
+      clip-path: polygon(10px 0%, calc(100% - 10px) 0%, 100% 10px, 100% calc(100% - 10px), calc(100% - 10px) 100%, 10px 100%, 0% calc(100% - 10px), 0% 10px);
+    }
+
+    .badge-text {
+      color: var(--neon-blue);
+      text-shadow: 0 0 5px var(--neon-blue);
+    }
+
+    /* IDENTITY SECTION */
+    .identity-section {
+      text-align: center;
+    }
+
+    .identity-prefix {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 15px;
+      color: var(--neon-blue);
+      font-family: 'Orbitron', sans-serif;
+      font-size: 0.9rem;
+      letter-spacing: 3px;
+      margin-bottom: 0.5rem;
+    }
+
+    .prefix-symbol {
+      opacity: 0.7;
+    }
+
+    .glitch-main {
+      font-family: 'Orbitron', sans-serif;
+      font-size: clamp(3rem, 8vw, 5rem);
+      font-weight: 800;
+      color: #fff;
+      text-shadow: 
+        0.05em 0 0 var(--neon-pink),
+        -0.05em -0.025em 0 var(--neon-blue);
+      animation: glitch-main 3s infinite;
+      position: relative;
+      margin-bottom: 1rem;
+    }
+
+    @keyframes glitch-main {
+      0%, 100% { transform: translate(0); }
+      20% { transform: translate(-2px, 2px); }
+      40% { transform: translate(2px, -2px); }
+      60% { transform: translate(-2px, 2px); }
+      80% { transform: translate(2px, -2px); }
+    }
+
+    .title-cyber {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+      justify-content: center;
+      font-family: 'Orbitron', sans-serif;
+    }
+
+    .title-item {
+      color: transparent;
+      -webkit-text-stroke: 1px var(--neon-blue);
+      text-shadow: 0 0 10px var(--neon-blue);
+      font-size: 1.3rem;
+      font-weight: 600;
+    }
+
+    .title-separator {
+      color: var(--neon-pink);
+      text-shadow: 0 0 10px var(--neon-pink);
+    }
+
+    /* STATS PANEL */
+    .stats-panel {
+      width: 100%;
+      max-width: 500px;
+      background: rgba(0, 0, 0, 0.5);
+      border: 1px solid var(--neon-blue);
+      padding: 1.5rem;
+      margin: 1rem 0;
+      clip-path: polygon(15px 0%, calc(100% - 15px) 0%, 100% 15px, 100% calc(100% - 15px), calc(100% - 15px) 100%, 15px 100%, 0% calc(100% - 15px), 0% 15px);
+    }
+
+    .stat-block {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      margin-bottom: 1rem;
+    }
+
+    .stat-block:last-child {
+      margin-bottom: 0;
+    }
+
+    .stat-icon {
+      width: 40px;
+      height: 40px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border: 1px solid var(--neon-blue);
+      color: var(--neon-blue);
+      font-size: 1.2rem;
+      clip-path: polygon(5px 0%, calc(100% - 5px) 0%, 100% 5px, 100% calc(100% - 5px), calc(100% - 5px) 100%, 5px 100%, 0% calc(100% - 5px), 0% 5px);
+    }
+
+    .stat-info {
+      flex: 1;
+    }
+
+    .stat-label {
+      display: block;
+      color: #888;
+      font-size: 0.8rem;
+      font-family: 'Orbitron', sans-serif;
+    }
+
+    .stat-value {
+      color: var(--neon-blue);
+      font-weight: 600;
+      text-shadow: 0 0 5px var(--neon-blue);
+    }
+
+    .stat-bar {
+      width: 100px;
+      height: 6px;
+      background: rgba(255, 255, 255, 0.1);
+      border: 1px solid var(--neon-blue);
+    }
+
+    .bar-fill {
+      height: 100%;
+      background: var(--neon-blue);
+      box-shadow: 0 0 10px var(--neon-blue);
+    }
+
+    /* CTA SECTION */
+    .cta-section {
+      text-align: center;
+    }
+
+    .cyber-button {
+      display: inline-flex;
+      align-items: center;
+      gap: 1rem;
+      background: transparent;
+      border: 2px solid var(--neon-blue);
+      color: var(--neon-blue);
+      padding: 1rem 3rem;
+      font-family: 'Orbitron', sans-serif;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      text-decoration: none;
+      position: relative;
+      overflow: hidden;
+      transition: all 0.3s ease;
+      clip-path: polygon(15px 0%, calc(100% - 15px) 0%, 100% 15px, 100% calc(100% - 15px), calc(100% - 15px) 100%, 15px 100%, 0% calc(100% - 15px), 0% 15px);
+    }
+
+    .cyber-button:hover {
+      background: var(--neon-blue);
+      color: #000;
+      box-shadow: 0 0 30px var(--neon-blue);
+    }
+
+    .btn-glitch {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(45deg, transparent 30%, rgba(255,255,255,0.3) 50%, transparent 70%);
+      transform: translateX(-100%);
+      transition: transform 0.6s;
+    }
+
+    .cyber-button:hover .btn-glitch {
+      transform: translateX(100%);
+    }
+
+    .scanning-animation {
+      margin-top: 1.5rem;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .scanner-text {
+      color: var(--neon-green);
+      font-family: 'Orbitron', sans-serif;
+      font-size: 0.9rem;
+      opacity: 0.7;
+    }
+
+    .scanner-line {
+      width: 100%;
+      height: 2px;
+      background: var(--neon-green);
+      animation: scan-line 2s linear infinite;
+    }
+
+    @keyframes scan-line {
+      0% { transform: translateX(-100%); }
+      100% { transform: translateX(100%); }
+    }
+
+    /* ========== BIODATA SECTION ========== */
+    #biodata {
+      background: linear-gradient(45deg, #0a0a1f, #1a0a2a);
+    }
+
+    .matrix-rain {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: repeating-linear-gradient(0deg, rgba(0,255,0,0.02) 0px, transparent 2px);
+      pointer-events: none;
+      z-index: 1;
+    }
+
+    .bio-container {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2rem;
+    }
+
+    /* DATA TERMINAL */
+    .data-terminal {
+      background: rgba(0, 0, 0, 0.6);
+      border: 1px solid var(--neon-blue);
+      padding: 1.5rem;
+      clip-path: polygon(15px 0%, calc(100% - 15px) 0%, 100% 15px, 100% calc(100% - 15px), calc(100% - 15px) 100%, 15px 100%, 0% calc(100% - 15px), 0% 15px);
+    }
+
+    .terminal-header {
+      display: flex;
+      justify-content: space-between;
+      border-bottom: 1px solid var(--neon-blue);
+      padding-bottom: 0.5rem;
+      margin-bottom: 1rem;
+    }
+
+    .terminal-title {
+      color: var(--neon-blue);
+      font-family: 'Orbitron', sans-serif;
+    }
+
+    .terminal-status {
+      color: var(--neon-green);
+      font-size: 0.8rem;
+    }
+
+    .terminal-body {
+      margin-bottom: 1rem;
+    }
+
+    .data-line {
+      display: flex;
+      margin-bottom: 0.8rem;
+      font-size: 0.95rem;
+    }
+
+    .data-command {
+      color: var(--neon-yellow);
+      width: 100px;
+      font-family: 'Orbitron', sans-serif;
+      font-size: 0.8rem;
+    }
+
+    .data-output {
+      color: #fff;
+      flex: 1;
+    }
+
+    .terminal-footer {
+      display: flex;
+      align-items: center;
+      gap: 5px;
+    }
+
+    .footer-cursor {
+      color: var(--neon-green);
+      animation: blink 1s infinite;
+    }
+
+    @keyframes blink {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0; }
+    }
+
+    .footer-text {
+      color: var(--neon-green);
+    }
+
+    /* BADGE GRID */
+    .badge-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1rem;
+      margin-top: 1rem;
+    }
+
+    .cyber-badge {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      background: rgba(0, 0, 0, 0.6);
+      border: 1px solid var(--neon-blue);
+      padding: 1rem;
+      font-size: 0.9rem;
+      clip-path: polygon(10px 0%, calc(100% - 10px) 0%, 100% 10px, 100% calc(100% - 10px), calc(100% - 10px) 100%, 10px 100%, 0% calc(100% - 10px), 0% 10px);
+    }
+
+    .cyber-badge i {
+      color: var(--neon-blue);
+    }
+
+    /* RIGHT PANEL */
+    .hologram-panel {
+      background: rgba(0, 0, 0, 0.6);
+      border: 1px solid var(--neon-blue);
+      padding: 1.5rem;
+      margin-bottom: 1rem;
+      clip-path: polygon(15px 0%, calc(100% - 15px) 0%, 100% 15px, 100% calc(100% - 15px), calc(100% - 15px) 100%, 15px 100%, 0% calc(100% - 15px), 0% 15px);
+    }
+
+    .panel-header {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 1rem;
+    }
+
+    .panel-title {
+      color: var(--neon-blue);
+      font-family: 'Orbitron', sans-serif;
+    }
+
+    .panel-value {
+      color: var(--neon-green);
+    }
+
+    .stats-container {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+
+    .stat-item-cyber {
+      width: 100%;
+    }
+
+    .stat-label-row {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 0.3rem;
+      font-size: 0.9rem;
+    }
+
+    .stat-track {
+      width: 100%;
+      height: 8px;
+      background: rgba(255, 255, 255, 0.1);
+      border: 1px solid var(--neon-blue);
+    }
+
+    .track-fill {
+      height: 100%;
+      background: linear-gradient(90deg, var(--neon-blue), var(--neon-pink));
+      box-shadow: 0 0 10px var(--neon-blue);
+    }
+
+    /* INTERESTS PANEL */
+    .interests-panel {
+      background: rgba(0, 0, 0, 0.6);
+      border: 1px solid var(--neon-blue);
+      padding: 1.5rem;
+      clip-path: polygon(15px 0%, calc(100% - 15px) 0%, 100% 15px, 100% calc(100% - 15px), calc(100% - 15px) 100%, 15px 100%, 0% calc(100% - 15px), 0% 15px);
+    }
+
+    .interests-grid {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.8rem;
+    }
+
+    .interest-chip {
+      background: rgba(0, 255, 255, 0.1);
+      border: 1px solid var(--neon-blue);
+      padding: 0.5rem 1rem;
+      font-size: 0.8rem;
+      font-family: 'Orbitron', sans-serif;
+      clip-path: polygon(5px 0%, calc(100% - 5px) 0%, 100% 5px, 100% calc(100% - 5px), calc(100% - 5px) 100%, 5px 100%, 0% calc(100% - 5px), 0% 5px);
+    }
+
+    /* ========== PROJECTS SECTION ========== */
+    #projects {
+      background: linear-gradient(135deg, #0a0a1a, #1a0a2a);
+    }
+
+    .projects-showcase {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 2rem;
+      margin-bottom: 2rem;
+    }
+
+    .project-cyber-card {
+      background: rgba(0, 0, 0, 0.6);
+      border: 1px solid var(--neon-blue);
+      padding: 1.5rem;
+      position: relative;
+      overflow: hidden;
+      transition: all 0.3s ease;
+      clip-path: polygon(15px 0%, calc(100% - 15px) 0%, 100% 15px, 100% calc(100% - 15px), calc(100% - 15px) 100%, 15px 100%, 0% calc(100% - 15px), 0% 15px);
+    }
+
+    .project-cyber-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 0 30px rgba(0, 255, 255, 0.3);
+    }
+
+    .project-cyber-card.featured {
+      border-color: var(--neon-yellow);
+      box-shadow: 0 0 20px rgba(255, 255, 0, 0.2);
+    }
+
+    .project-glow {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: radial-gradient(circle at 50% 50%, transparent, rgba(0,255,255,0.05));
+      pointer-events: none;
+    }
+
+    .project-header {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 1rem;
+    }
+
+    .project-number {
+      color: var(--neon-blue);
+      font-family: 'Orbitron', sans-serif;
+      font-size: 0.8rem;
+    }
+
+    .project-status {
+      font-size: 0.7rem;
+      padding: 2px 8px;
+      font-family: 'Orbitron', sans-serif;
+    }
+
+    .project-status.completed {
+      background: rgba(0, 255, 0, 0.2);
+      border: 1px solid #0f0;
+      color: #0f0;
+    }
+
+    .project-status.live {
+      background: rgba(255, 255, 0, 0.2);
+      border: 1px solid #ff0;
+      color: #ff0;
+    }
+
+    .project-status.encrypted {
+      background: rgba(255, 0, 255, 0.2);
+      border: 1px solid #f0f;
+      color: #f0f;
+    }
+
+    .project-status.classified {
+      background: rgba(255, 0, 0, 0.2);
+      border: 1px solid #f00;
+      color: #f00;
+    }
+
+    .project-icon {
+      font-size: 2.5rem;
+      color: var(--neon-blue);
+      margin-bottom: 1rem;
+    }
+
+    .project-name {
+      font-family: 'Orbitron', sans-serif;
+      font-size: 1.5rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .project-tags {
+      display: flex;
+      gap: 0.5rem;
+      margin-bottom: 1rem;
+    }
+
+    .tag {
+      background: rgba(0, 255, 255, 0.1);
+      border: 1px solid var(--neon-blue);
+      padding: 2px 8px;
+      font-size: 0.7rem;
+      font-family: 'Orbitron', sans-serif;
+    }
+
+    .project-desc {
+      font-size: 0.9rem;
+      color: #aaa;
+      margin-bottom: 1rem;
+    }
+
+    .project-meta {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .meta-date {
+      color: #666;
+      font-size: 0.8rem;
+    }
+
+    .meta-link {
+      color: var(--neon-blue);
+      cursor: pointer;
+    }
+
+    /* DOCUMENTATION SECTION */
+    .documentation-section {
+      margin-top: 2rem;
+    }
+
+    .doc-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 1rem;
+    }
+
+    .doc-title {
+      color: var(--neon-blue);
+      font-family: 'Orbitron', sans-serif;
+    }
+
+    .doc-refresh {
+      color: var(--neon-blue);
+      cursor: pointer;
+      animation: spin 2s linear infinite;
+    }
+
+    @keyframes spin {
+      from { transform: rotate(0deg); }
+      to { transform: rotate(360deg); }
+    }
+
+    .doc-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+      gap: 1rem;
+    }
+
+    .doc-item {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      background: rgba(0, 0, 0, 0.4);
+      border: 1px solid var(--neon-blue);
+      padding: 1rem;
+      font-size: 0.9rem;
+      clip-path: polygon(10px 0%, calc(100% - 10px) 0%, 100% 10px, 100% calc(100% - 10px), calc(100% - 10px) 100%, 10px 100%, 0% calc(100% - 10px), 0% 10px);
+    }
+
+    .doc-item i {
+      color: var(--neon-blue);
+    }
+
+    /* ========== SOCIAL SECTION ========== */
+    #social {
+      background: radial-gradient(circle at 30% 30%, #1a0033, #000000);
+    }
+
+    .circuit-board {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-image: 
+        linear-gradient(90deg, transparent 95%, var(--neon-blue) 100%),
+        linear-gradient(0deg, transparent 95%, var(--neon-blue) 100%);
+      background-size: 30px 30px;
+      opacity: 0.1;
+      pointer-events: none;
+      z-index: 1;
+    }
+
+    .neural-interface {
+      position: relative;
+      height: 80px;
+      margin: 2rem 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .neural-nodes {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+    }
+
+    .node {
+      position: absolute;
+      width: 10px;
+      height: 10px;
+      background: var(--neon-blue);
+      border-radius: 50%;
+      box-shadow: 0 0 20px var(--neon-blue);
+      animation: pulse-node 2s infinite;
+    }
+
+    .node.n1 { top: 20%; left: 10%; animation-delay: 0s; }
+    .node.n2 { top: 60%; left: 30%; animation-delay: 0.5s; }
+    .node.n3 { top: 30%; left: 70%; animation-delay: 1s; }
+    .node.n4 { top: 70%; left: 80%; animation-delay: 1.5s; }
+    .node.n5 { top: 40%; left: 50%; animation-delay: 2s; }
+
+    @keyframes pulse-node {
+      0%, 100% { transform: scale(1); opacity: 1; }
+      50% { transform: scale(1.5); opacity: 0.5; }
+    }
+
+    .neural-text {
+      color: var(--neon-blue);
+      font-family: 'Orbitron', sans-serif;
+      z-index: 2;
+      background: rgba(0,0,0,0.7);
+      padding: 5px 20px;
+      border: 1px solid var(--neon-blue);
+    }
+
+    /* SOCIAL GRID */
+    .social-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 1.5rem;
+      margin: 2rem 0;
+    }
+
+    .social-cyber-card {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      background: rgba(0, 0, 0, 0.6);
+      border: 1px solid var(--neon-blue);
+      padding: 1.5rem;
+      text-decoration: none;
+      color: #fff;
+      position: relative;
+      overflow: hidden;
+      transition: all 0.3s ease;
+      clip-path: polygon(15px 0%, calc(100% - 15px) 0%, 100% 15px, 100% calc(100% - 15px), calc(100% - 15px) 100%, 15px 100%, 0% calc(100% - 15px), 0% 15px);
+    }
+
+    .social-cyber-card:hover {
+      transform: translateX(5px);
+      border-color: var(--neon-pink);
+      box-shadow: 0 0 30px rgba(255, 0, 255, 0.3);
+    }
+
+    .social-icon {
+      width: 50px;
+      height: 50px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border: 1px solid var(--neon-blue);
+      font-size: 1.5rem;
+      color: var(--neon-blue);
+      clip-path: polygon(5px 0%, calc(100% - 5px) 0%, 100% 5px, 100% calc(100% - 5px), calc(100% - 5px) 100%, 5px 100%, 0% calc(100% - 5px), 0% 5px);
+    }
+
+    .social-info {
+      flex: 1;
+    }
+
+    .social-platform {
+      display: block;
+      font-family: 'Orbitron', sans-serif;
+      font-weight: 600;
+    }
+
+    .social-handle {
+      display: block;
+      color: #888;
+      font-size: 0.8rem;
+    }
+
+    .social-status {
+      font-size: 0.7rem;
+      color: #0f0;
+      border: 1px solid #0f0;
+      padding: 2px 8px;
+      clip-path: polygon(5px 0%, calc(100% - 5px) 0%, 100% 5px, 100% calc(100% - 5px), calc(100% - 5px) 100%, 5px 100%, 0% calc(100% - 5px), 0% 5px);
+    }
+
+    .social-glow {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(45deg, transparent, rgba(0,255,255,0.1), transparent);
+      transform: translateX(-100%);
+      transition: transform 0.6s;
+    }
+
+    .social-cyber-card:hover .social-glow {
+      transform: translateX(100%);
+    }
+
+    /* CONTACT TERMINAL */
+    .contact-terminal {
+      background: rgba(0, 0, 0, 0.6);
+      border: 1px solid var(--neon-blue);
+      padding: 1.5rem;
+      margin: 2rem 0;
+      clip-path: polygon(20px 0%, calc(100% - 20px) 0%, 100% 20px, 100% calc(100% - 20px), calc(100% - 20px) 100%, 20px 100%, 0% calc(100% - 20px), 0% 20px);
+    }
+
+    .terminal-row {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      margin-bottom: 0.8rem;
+      font-family: 'Orbitron', sans-serif;
+    }
+
+    .terminal-row .prompt {
+      color: var(--neon-green);
+      font-weight: 600;
+    }
+
+    .terminal-row .command {
+      color: var(--neon-yellow);
+      width: 100px;
+    }
+
+    .terminal-row .response {
+      color: #fff;
+      flex: 1;
+    }
+
+    .terminal-row .response.blink {
+      color: var(--neon-green);
+      animation: blink 1s infinite;
+    }
+
+    /* CYBER FOOTER */
+    .cyber-footer {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-top: 2rem;
+      padding-top: 1rem;
+      border-top: 1px solid var(--neon-blue);
+    }
+
+    .footer-glitch {
+      position: relative;
+      color: var(--neon-blue);
+      font-family: 'Orbitron', sans-serif;
+      font-size: 0.9rem;
+    }
+
+    .footer-version {
+      color: #666;
+      font-size: 0.8rem;
+    }
+
+    /* BACK TO TOP */
+    .back-to-top-cyber {
+      position: fixed;
+      bottom: 2rem;
+      right: 2rem;
+      width: 50px;
+      height: 50px;
+      background: rgba(0, 0, 0, 0.8);
+      border: 1px solid var(--neon-blue);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--neon-blue);
+      text-decoration: none;
+      z-index: 9999;
+      transition: all 0.3s ease;
+      clip-path: polygon(10px 0%, calc(100% - 10px) 0%, 100% 10px, 100% calc(100% - 10px), calc(100% - 10px) 100%, 10px 100%, 0% calc(100% - 10px), 0% 10px);
+    }
+
+    .back-to-top-cyber:hover {
+      background: var(--neon-blue);
+      color: #000;
+      box-shadow: 0 0 30px var(--neon-blue);
+    }
+
+    .top-glow {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      background: radial-gradient(circle at 50% 50%, var(--neon-blue), transparent);
+      opacity: 0;
+      transition: opacity 0.3s;
+    }
+
+    .back-to-top-cyber:hover .top-glow {
+      opacity: 0.5;
+    }
+
+    /* RESPONSIVE */
+    @media (max-width: 768px) {
+      .cyber-nav {
+        padding: 0.8rem 1rem;
+        width: 95%;
+      }
+
+      .nav-links {
+        gap: 0.5rem;
+      }
+
+      .nav-link {
+        font-size: 0.7rem;
+      }
+
+      .link-number {
+        display: none;
+      }
+
+      .nav-status {
+        padding: 5px 8px;
+      }
+
+      .bio-container {
+        grid-template-columns: 1fr;
+      }
+
+      .cyber-card {
+        padding: 2rem 1rem;
+      }
+
+      .stats-panel {
+        padding: 1rem;
+      }
+
+      .stat-block {
+        flex-wrap: wrap;
+      }
+
+      .stat-bar {
+        width: 100%;
+      }
+
+      .title-cyber {
+        gap: 0.5rem;
+      }
+
+      .title-item {
+        font-size: 1rem;
+      }
+
+      .profile-ring-outer {
+        width: 200px;
+        height: 200px;
+      }
+
+      .back-to-top-cyber {
+        bottom: 1rem;
+        right: 1rem;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- CYBERPUNK ATMOSPHERE EFFECTS -->
+  <div class="noise"></div>
+  <div class="scanline"></div>
+  <div class="glitch-overlay"></div>
+  <div class="flicker"></div>
+  <div class="rain"></div>
+  
+  <!-- HOLOGRAPHIC NAVIGATION -->
+  <nav class="cyber-nav">
+    <div class="nav-container">
+      <div class="nav-logo">
+        <span class="glitch-text" data-text="◈ NEXUS_47 ◈">◈ DAFFA BINTANG ◈</span>
+      </div>
+      
+      <div class="nav-links">
+        <a href="#cover" class="nav-link active" data-section="cover">
+          <span class="link-number">01</span>
+          <span class="link-text">HOME</span>
+          <span class="link-glow"></span>
+        </a>
+        <a href="#biodata" class="nav-link" data-section="biodata">
+          <span class="link-number">02</span>
+          <span class="link-text">BIO</span>
+          <span class="link-glow"></span>
+        </a>
+        <a href="#projects" class="nav-link" data-section="projects">
+          <span class="link-number">03</span>
+          <span class="link-text">PROJECTS</span>
+          <span class="link-glow"></span>
+        </a>
+        <a href="#social" class="nav-link" data-section="social">
+          <span class="link-number">04</span>
+          <span class="link-text">SOSMED CONNECT</span>
+          <span class="link-glow"></span>
+        </a>
+      </div>
+      
+      <div class="nav-status">
+        <div class="status-light"></div>
+        <div class="status-text">
+          <span class="status-label">SYSTEM</span>
+          <span class="status-value">ONLINE</span>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <!-- COVER SECTION - CYBERPUNK HOME -->
+  <section class="section" id="cover">
+    <div class="cyber-grid"></div>
+    <div class="hologram-ring"></div>
+    <div class="floating-elements">
+      <div class="float-element e1">[ACCESS_GRANTED]</div>
+      <div class="float-element e2">[SYSTEM_READY]</div>
+      <div class="float-element e3">[NEURAL_LINK]</div>
+    </div>
+    
+    <div class="cyber-card cover-card">
+      <div class="card-corner tl"></div>
+      <div class="card-corner tr"></div>
+      <div class="card-corner bl"></div>
+      <div class="card-corner br"></div>
+      
+      <div class="cover-content">
+        <div class="profile-section">
+          <div class="profile-ring-outer">
+            <div class="profile-ring-middle">
+              <div class="profile-ring-inner">
+                <div class="foto-lingkaran foto-saya-img" title="PROFILE_SCAN" role="img" aria-label="foto profile"></div>
+              </div>
+            </div>
+          </div>
+          <div class="profile-scan"></div>
+          <div class="profile-badge">
+            <span class="badge-text">LEVEL 100 // KING RASISM</span>
+          </div>
+        </div>
+        
+        <div class="identity-section">
+          <div class="identity-prefix">
+            <span class="prefix-symbol">>></span>
+            <span class="prefix-text">IDENTIFICATION</span>
+            <span class="prefix-symbol"><<</span>
+          </div>
+          
+          <h1 class="glitch-main" data-text="ADITYA_NEXUS">DAFFA BINTANG</h1>
+          
+          <div class="title-cyber">
+            <span class="title-item">CYBERPUNK</span>
+            <span class="title-separator">//</span>
+            <span class="title-item">WEBSITE</span>
+            <span class="title-separator">//</span>
+            <span class="title-item">DESIGNER</span>
+          </div>
+        </div>
+        
+        <div class="stats-panel">
+          <div class="stat-block">
+            <div class="stat-icon"><i class="fas fa-bolt"></i></div>
+            <div class="stat-info">
+              <span class="stat-label">POWER LEVEL</span>
+              <span class="stat-value">99.9%</span>
+            </div>
+            <div class="stat-bar">
+              <div class="bar-fill" style="width: 99%"></div>
+            </div>
+          </div>
+          
+          <div class="stat-block">
+            <div class="stat-icon"><i class="fas fa-shield-halved"></i></div>
+            <div class="stat-info">
+              <span class="stat-label">ARMOR</span>
+              <span class="stat-value">MAX</span>
+            </div>
+            <div class="stat-bar">
+              <div class="bar-fill" style="width: 100%"></div>
+            </div>
+          </div>
+          
+          <div class="stat-block">
+            <div class="stat-icon"><i class="fas fa-microchip"></i></div>
+            <div class="stat-info">
+              <span class="stat-label">CYBERWARE</span>
+              <span class="stat-value">87%</span>
+            </div>
+            <div class="stat-bar">
+              <div class="bar-fill" style="width: 87%"></div>
+            </div>
+          </div>
+        </div>
+        
+        <div class="cta-section">
+          <a href="#biodata" class="cyber-button primary">
+            <span class="btn-text">NEXT</span>
+            <span class="btn-icon"><i class="fas fa-arrow-right"></i></span>
+            <span class="btn-glitch"></span>
+          </a>
+          
+          <div class="scanning-animation">
+            <span class="scanner-text">[SCANNING BIODATA...]</span>
+            <div class="scanner-line"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- BIODATA SECTION - CYBERPUNK STYLE -->
+  <section class="section" id="biodata">
+    <div class="cyber-grid"></div>
+    <div class="matrix-rain"></div>
+    
+    <div class="cyber-card bio-card">
+      <div class="card-corner tl"></div>
+      <div class="card-corner tr"></div>
+      <div class="card-corner bl"></div>
+      <div class="card-corner br"></div>
+      
+      <div class="section-header">
+        <span class="section-code">[02]</span>
+        <h2 class="section-title-cyber">
+          <span class="title-glitch" data-text="BIOMETRIC_DATA">BIODATA</span>
+        </h2>
+        <div class="header-line"></div>
+      </div>
+      
+      <div class="bio-container">
+        <!-- LEFT PANEL - PERSONAL DATA -->
+        <div class="bio-left">
+          <div class="data-terminal">
+            <div class="terminal-header">
+              <span class="terminal-title">>_PERSONAL_FILE.exe</span>
+              <span class="terminal-status">DECRYPTED</span>
+            </div>
+            
+            <div class="terminal-body">
+              <div class="data-line">
+                <span class="data-command">NAMA :</span>
+                <span class="data-output">DAFFA BINTANG // BEST JUNGLER</span>
+              </div>
+              
+              <div class="data-line">
+                <span class="data-command">TEMPAT/TGL LAHIR :</span>
+                <span class="data-output">MUARA SIBERUT,31-JULI-2005</span>
+              </div>
+              
+              <div class="data-line">
+                <span class="data-command">JENIS KELAMIN :</span>
+                <span class="data-output">LAKI-LAKI</span>
+              </div>
+              
+              <div class="data-line">
+                <span class="data-command">ROLE MOBILE LEGENDS :</span>
+                <span class="data-output">JUNGLER</span>
+              </div>
+              
+              <div class="data-line">
+                <span class="data-command">EMAIL :</span>
+                <span class="data-output">daffabintang2005@gmail.com</span>
+              </div>
+              
+              <div class="data-line">
+                <span class="data-command">SKILL :</span>
+                <span class="data-output">BIKIN BAPER</span>
+              </div>
+            </div>
+            
+            <div class="terminal-footer">
+              <span class="footer-cursor">>_</span>
+              <span class="footer-text">READY</span>
+            </div>
+          </div>
+          
+          <div class="badge-grid">
+            <div class="cyber-badge">
+              <i class="fas fa-trophy"></i>
+              <span>ELITE_RANK // 3+ YEARS</span>
+            </div>
+            <div class="cyber-badge">
+              <i class="fas fa-bolt"></i>
+              <span>COMPLETED // 12+ MISSIONS</span>
+            </div>
+          </div>
+        </div>
+        
+        <!-- RIGHT PANEL - STATS & INTERESTS -->
+        <div class="bio-right">
+          <div class="hologram-panel">
+            <div class="panel-header">
+              <span class="panel-title">NEURAL_MATRIX</span>
+              <span class="panel-value">[ACTIVE]</span>
+            </div>
+            
+            <div class="stats-container">
+              <div class="stat-item-cyber">
+                <div class="stat-label-row">
+                  <span>COMBAT_PRO</span>
+                  <span>95%</span>
+                </div>
+                <div class="stat-track">
+                  <div class="track-fill" style="width: 95%"></div>
+                </div>
+              </div>
+              
+              <div class="stat-item-cyber">
+                <div class="stat-label-row">
+                  <span>TECH_SKILL</span>
+                  <span>98%</span>
+                </div>
+                <div class="stat-track">
+                  <div class="track-fill" style="width: 98%"></div>
+                </div>
+              </div>
+              
+              <div class="stat-item-cyber">
+                <div class="stat-label-row">
+                  <span>COOL</span>
+                  <span>92%</span>
+                </div>
+                <div class="stat-track">
+                  <div class="track-fill" style="width: 92%"></div>
+                </div>
+              </div>
+              
+              <div class="stat-item-cyber">
+                <div class="stat-label-row">
+                  <span>INTELLIGENCE</span>
+                  <span>96%</span>
+                </div>
+                <div class="stat-track">
+                  <div class="track-fill" style="width: 96%"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+          
+          <div class="interests-panel">
+            <div class="panel-header">
+              <span class="panel-title">INTEREST_MATRIX</span>
+              <span class="panel-value">[12 ITEMS]</span>
+            </div>
+            
+            <div class="interests-grid">
+              <span class="interest-chip">NEON_NOIR</span>
+              <span class="interest-chip">HOLO_TYPO</span>
+              <span class="interest-chip">AI_GEN</span>
+              <span class="interest-chip">DIGITAL_ART</span>
+              <span class="interest-chip">CYBER_FASHION</span>
+              <span class="interest-chip">SYNTHWAVE</span>
+              <span class="interest-chip">NEURAL_LINK</span>
+              <span class="interest-chip">QUANTUM</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PROJECTS SECTION - CYBERPUNK -->
+  <section class="section" id="projects">
+    <div class="cyber-grid"></div>
+    
+    <div class="cyber-card projects-card">
+      <div class="card-corner tl"></div>
+      <div class="card-corner tr"></div>
+      <div class="card-corner bl"></div>
+      <div class="card-corner br"></div>
+      
+      <div class="section-header">
+        <span class="section-code">[03]</span>
+        <h2 class="section-title-cyber">
+          <span class="title-glitch" data-text="MISSION_LOG">MISSION_LOG</span>
+        </h2>
+        <div class="header-line"></div>
+      </div>
+      
+      <div class="projects-showcase">
+        <!-- PROJECT CARD 1 -->
+        <div class="project-cyber-card">
+          <div class="project-glow"></div>
+          <div class="project-header">
+            <span class="project-number">#001</span>
+            <span class="project-status completed">COMPLETED</span>
+          </div>
+          
+          <div class="project-icon">
+            <i class="fas fa-leaf"></i>
+          </div>
+          
+          <h3 class="project-name">VERDANT_AI</h3>
+          
+          <div class="project-tags">
+            <span class="tag">UI/UX</span>
+            <span class="tag">AR</span>
+            <span class="tag">AI</span>
+          </div>
+          
+          <p class="project-desc">PLANT_TRACKER with augmented reality. Neural interface integration. User rating: 4.9/5</p>
+          
+          <div class="project-meta">
+            <span class="meta-date"><i class="far fa-calendar"></i> 2047.03.21</span>
+            <span class="meta-link"><i class="fas fa-external-link-alt"></i></span>
+          </div>
+        </div>
+        
+        <!-- PROJECT CARD 2 -->
+        <div class="project-cyber-card featured">
+          <div class="project-glow"></div>
+          <div class="project-header">
+            <span class="project-number">#002</span>
+            <span class="project-status live">LIVE</span>
+          </div>
+          
+          <div class="project-icon">
+            <i class="fas fa-cubes"></i>
+          </div>
+          
+          <h3 class="project-name">KALEIDOSCOPE</h3>
+          
+          <div class="project-tags">
+            <span class="tag">GEN_ART</span>
+            <span class="tag">INSTALL</span>
+            <span class="tag">HOLO</span>
+          </div>
+          
+          <p class="project-desc">Generative art installation // National Cyber Expo 2024 // Featured in Neo-Tokyo Times</p>
+          
+          <div class="project-meta">
+            <span class="meta-date"><i class="far fa-calendar"></i> 2047.05.12</span>
+            <span class="meta-link"><i class="fas fa-external-link-alt"></i></span>
+          </div>
+        </div>
+        
+        <!-- PROJECT CARD 3 -->
+        <div class="project-cyber-card">
+          <div class="project-glow"></div>
+          <div class="project-header">
+            <span class="project-number">#003</span>
+            <span class="project-status encrypted">ENCRYPTED</span>
+          </div>
+          
+          <div class="project-icon">
+            <i class="fas fa-mobile-alt"></i>
+          </div>
+          
+          <h3 class="project-name">RUANG_CERITA</h3>
+          
+          <div class="project-tags">
+            <span class="tag">MOBILE</span>
+            <span class="tag">AUDIO</span>
+            <span class="tag">SOCIAL</span>
+          </div>
+          
+          <p class="project-desc">Community audio storytelling platform // 10K+ downloads // Accessibility integrated</p>
+          
+          <div class="project-meta">
+            <span class="meta-date"><i class="far fa-calendar"></i> 2047.08.30</span>
+            <span class="meta-link"><i class="fas fa-external-link-alt"></i></span>
+          </div>
+        </div>
+        
+        <!-- PROJECT CARD 4 -->
+        <div class="project-cyber-card">
+          <div class="project-glow"></div>
+          <div class="project-header">
+            <span class="project-number">#004</span>
+            <span class="project-status classified">CLASSIFIED</span>
+          </div>
+          
+          <div class="project-icon">
+            <i class="fas fa-brain"></i>
+          </div>
+          
+          <h3 class="project-name">NEURAL_LINK</h3>
+          
+          <div class="project-tags">
+            <span class="tag">BCI</span>
+            <span class="tag">AI</span>
+            <span class="tag">R&D</span>
+          </div>
+          
+          <p class="project-desc">Brain-computer interface prototype // Neuralink competition finalist // Patent pending</p>
+          
+          <div class="project-meta">
+            <span class="meta-date"><i class="far fa-calendar"></i> 2047.11.07</span>
+            <span class="meta-link"><i class="fas fa-external-link-alt"></i></span>
+          </div>
+        </div>
+      </div>
+      
+      <!-- DOCUMENTATION SECTION -->
+      <div class="documentation-section">
+        <div class="doc-header">
+          <span class="doc-title">>_EVIDENCE_LOG [4 FILES]</span>
+          <div class="doc-refresh"><i class="fas fa-sync-alt"></i></div>
+        </div>
+        
+        <div class="doc-grid">
+          <div class="doc-item">
+            <i class="fas fa-camera"></i>
+            <span>WORKSHOP_2047</span>
+          </div>
+          <div class="doc-item">
+            <i class="fas fa-video"></i>
+            <span>DEMO_DAY</span>
+          </div>
+          <div class="doc-item">
+            <i class="fas fa-image"></i>
+            <span>PROCESS_40+</span>
+          </div>
+          <div class="doc-item">
+            <i class="fas fa-users"></i>
+            <span>COLLAB_6</span>
+          </div>
+          <div class="doc-item">
+            <i class="far fa-file-pdf"></i>
+            <span>PORTFOLIO.PDF</span>
+          </div>
+          <div class="doc-item">
+            <i class="far fa-images"></i>
+            <span>GALLERY_23-25</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SOCIAL SECTION - CYBERPUNK -->
+  <section class="section" id="social">
+    <div class="cyber-grid"></div>
+    <div class="circuit-board"></div>
+    
+    <div class="cyber-card social-card">
+      <div class="card-corner tl"></div>
+      <div class="card-corner tr"></div>
+      <div class="card-corner bl"></div>
+      <div class="card-corner br"></div>
+      
+      <div class="section-header center">
+        <span class="section-code">[04]</span>
+        <h2 class="section-title-cyber">
+          <span class="title-glitch" data-text="CONNECT_NEURAL">CONNECT TO ME</span>
+        </h2>
+        <div class="header-line center"></div>
+      </div>
+      
+      <!-- NEURAL INTERFACE ANIMATION -->
+      <div class="neural-interface">
+        <div class="neural-nodes">
+          <div class="node n1"></div>
+          <div class="node n2"></div>
+          <div class="node n3"></div>
+          <div class="node n4"></div>
+          <div class="node n5"></div>
+        </div>
+        <div class="neural-text">DAFFA SOSMED LINK...</div>
+      </div>
+      
+      <!-- SOCIAL MEDIA GRID -->
+      <div class="social-grid">
+        <a href="https://www.instagram.com/urr_daffaa?igsh=NXd5bzN2ZGFvcXl0&utm_source=qr" class="social-cyber-card" target="_blank">
+          <div class="social-icon"><i class="fab fa-instagram"></i></div>
+          <div class="social-info">
+            <span class="social-platform">INSTAGRAM</span>
+            <span class="social-handle">@urr_daffaa</span>
+          </div>
+          <div class="social-status">ONLINE</div>
+          <div class="social-glow"></div>
+        </a>
+        
+        <a href="https://www.tiktok.com/@justdaffa01" class="social-cyber-card" target="_blank">
+          <div class="social-icon"><i class="fab fa-tiktok"></i></div>
+          <div class="social-info">
+            <span class="social-platform">TIK-TOK</span>
+            <span class="social-handle">@justdaffa01</span>
+          </div>
+          <div class="social-status">ONLINE</div>
+          <div class="social-glow"></div>
+        </a>
+        
+        <a href="https://github.com/daffabintang2005-hue" class="social-cyber-card" target="_blank">
+          <div class="social-icon"><i class="fab fa-github"></i></div>
+          <div class="social-info">
+            <span class="social-platform">GITHUB</span>
+            <span class="social-handle">daffabintang2005-hue</span>
+          </div>
+          <div class="social-status">ONLINE</div>
+          <div class="social-glow"></div>
+        </a>
+        
+        <a href="https://www.facebook.com/share/185FRYTsyg/" class="social-cyber-card" target="_blank">
+          <div class="social-icon"><i class="fab fa-facebook"></i></div>
+          <div class="social-info">
+            <span class="social-platform">FACEBOOK</span>
+            <span class="social-handle">DAFFA BINTANG</span>
+          </div>
+          <div class="social-status">ONLINE</div>
+          <div class="social-glow"></div>
+        </a>
+        
+        <a href="https://discord.gg/geyAbmAj" class="social-cyber-card" target="_blank">
+          <div class="social-icon"><i class="fab fa-discord"></i></div>
+          <div class="social-info">
+            <span class="social-platform">DISCORD</span>
+            <span class="social-handle">daffa_bintang_62267</span>
+          </div>
+          <div class="social-status">ONLINE</div>
+          <div class="social-glow"></div>
+        </a>
+      </div>
+      
+      <!-- CONTACT TERMINAL -->
+      <div class="contact-terminal">
+        <div class="terminal-row">
+          <span class="prompt">></span>
+          <span class="command">EMAIL_LINK</span>
+          <span class="response">daffabintang2005@gmail.com</span>
+        </div>
+        <div class="terminal-row">
+          <span class="prompt">></span>
+          <span class="command">Hp</span>
+          <span class="response">+62 823 8103 8176</span>
+        </div>
+        <div class="terminal-row">
+          <span class="prompt">></span>
+          <span class="command">STATUS</span>
+          <span class="response blink">ACCEPTING CONNECTIONS</span>
+        </div>
+      </div>
+      
+      <!-- FOOTER -->
+      <div class="cyber-footer">
+        <span class="footer-glitch" data-text="© 2047 // NEXUS_CORE">© 2026 // DAFFA BINTANG</span>
+        <span class="footer-version">[V.5.0.2 // CYBERPUNK_2077_EDITION]</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- BACK TO TOP BUTTON -->
+  <a href="#cover" class="back-to-top-cyber" aria-label="kembali ke awal">
+    <i class="fas fa-arrow-up"></i>
+    <span class="top-glow"></span>
+  </a>
+
+  <!-- JAVASCRIPT -->
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      // NAVIGATION ACTIVE STATE
+      const sections = document.querySelectorAll('.section');
+      const navLinks = document.querySelectorAll('.nav-link');
+      
+      window.addEventListener('scroll', function() {
+        let current = '';
+        
+        sections.forEach(section => {
+          const sectionTop = section.offsetTop;
+          const sectionHeight = section.clientHeight;
+          if (window.scrollY >= (sectionTop - 300)) {
+            current = section.getAttribute('id');
+          }
+        });
+        
+        navLinks.forEach(link => {
+          link.classList.remove('active');
+          if (link.getAttribute('href') === `#${current}`) {
+            link.classList.add('active');
+          }
+        });
+      });
+      
+      // RAIN EFFECT GENERATOR
+      const rainContainer = document.querySelector('.rain');
+      if (rainContainer) {
+        for (let i = 0; i < 50; i++) {
+          const drop = document.createElement('div');
+          drop.className = 'rain-drop';
+          drop.style.left = Math.random() * 100 + '%';
+          drop.style.animationDuration = (0.5 + Math.random() * 1.5) + 's';
+          drop.style.animationDelay = Math.random() * 2 + 's';
+          drop.style.opacity = 0.1 + Math.random() * 0.3;
+          rainContainer.appendChild(drop);
+        }
+      }
+      
+      // RANDOM GLITCH EFFECT
+      setInterval(() => {
+        const glitchElements = document.querySelectorAll('.glitch-text, .glitch-main, .title-glitch');
+        glitchElements.forEach(el => {
+          if (Math.random() > 0.7) {
+            el.style.animation = 'glitch-1 0.2s ease, glitch-2 0.2s ease';
+            setTimeout(() => {
+              el.style.animation = '';
+            }, 200);
+          }
+        });
+      }, 3000);
+      
+      // HOLOGRAM RING ROTATION
+      const hologramRing = document.querySelector('.hologram-ring');
+      if (hologramRing) {
+        setInterval(() => {
+          hologramRing.style.transform = `translate(-50%, -50%) rotate(${Math.random() * 360}deg)`;
+        }, 5000);
+      }
+      
+      // TERMINAL CURSOR BLINK
+      const cursor = document.querySelector('.footer-cursor');
+      if (cursor) {
+        setInterval(() => {
+          cursor.style.opacity = cursor.style.opacity === '0' ? '1' : '0';
+        }, 500);
+      }
+      
+      // SMOOTH SCROLL FOR NAVIGATION
+      navLinks.forEach(link => {
+        link.addEventListener('click', function(e) {
+          e.preventDefault();
+          const targetId = this.getAttribute('href');
+          const targetSection = document.querySelector(targetId);
+          targetSection.scrollIntoView({ behavior: 'smooth' });
+        });
+      });
+      
+      // BACK TO TOP SMOOTH SCROLL
+      const backToTop = document.querySelector('.back-to-top-cyber');
+      if (backToTop) {
+        backToTop.addEventListener('click', function(e) {
+          e.preventDefault();
+          document.querySelector('#cover').scrollIntoView({ behavior: 'smooth' });
+        });
+      }
+    });
+  </script>
+</body>
+>>>>>>> b256112dfd7502c010d1f11dc1de1e07411379db
 </html>
